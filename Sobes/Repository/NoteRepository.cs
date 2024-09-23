@@ -23,7 +23,7 @@ namespace Sobes.Repository
 
         public async Task<Note?> GetNoteByIdAsync(int id)
         {
-            return await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
+            return await _context.Notes.Include(n => n.Tags).FirstOrDefaultAsync(n => n.Id == id);
         }
 
         public async Task<List<Note>> GetAllNotesAsync()

@@ -8,7 +8,7 @@ using Sobes.Command;
 namespace Sobes.Controller
 {
 
-    [Route("api/v1/function/Reminder")]
+    [Route("api/v1/function/reminder")]
     [ApiController]
     public class ReminderController : ControllerBase
     {

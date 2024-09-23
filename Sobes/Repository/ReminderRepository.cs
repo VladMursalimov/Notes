@@ -23,12 +23,14 @@ namespace Sobes.Repository
 
         public async Task<Reminder?> GetReminderByIdAsync(int id)
         {
-            return await _context.Reminders.FirstOrDefaultAsync(n => n.Id == id);
+            var reminder = await _context.Reminders.Include(x => x.Tags).FirstOrDefaultAsync(n => n.Id == id);           
+            return reminder;
         }
 
         public async Task<List<Reminder>> GetAllRemindersAsync()
         {
-            return await _context.Reminders.ToListAsync();
+            
+            return await _context.Reminders.Include(x => x.Tags).ToListAsync();
         }
 
         public async Task AddReminderAsync(Reminder Reminder)

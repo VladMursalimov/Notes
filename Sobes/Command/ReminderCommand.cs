@@ -39,6 +39,7 @@ namespace Sobes.Command
         public async Task<int> Handle(CreateReminderCommand request, CancellationToken cancellationToken)
         {
             var tags = await _context.Tags.Where(t => request.TagIds.Contains(Convert.ToInt32(t.Id))).ToListAsync();
+            
             var Reminder = new Reminder { Title = request.Title, Text = request.Text, Tags = tags,
                 CreatedDate = DateTime.UtcNow.Date, ModifiedDate = DateTime.UtcNow.Date, ReminderTime = request.ReminderTime };
             await _ReminderService.CreateReminderAsync(Reminder);
@@ -63,7 +64,7 @@ namespace Sobes.Command
         }
     }
 
-    public record UpdateReminderCommand(int Id, string Title,string Text, int NoteId, DateTime reminderTime) : IRequest
+    public record UpdateReminderCommand(int Id, string Title,string Text, DateTime reminderTime) : IRequest
     {
         public int Id { get; set; }
     }
@@ -88,8 +89,6 @@ namespace Sobes.Command
             {
                 throw new Exception("Напоминалка не найдена");
             }
-
-            var note = _context.Notes.FirstOrDefault(r => r.Id == request.NoteId);
 
             reminder.Title = request.Title;
             reminder.Text = request.Text;
