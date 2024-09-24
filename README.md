@@ -17,3 +17,4 @@
 * Для инициализации базы данных `dotnet ef database update`
 * Запуск производится в MS VS (http, https) или в powershell `dotnet run`
 * Не реализованы unit-test.
+* Для выполнения запросов использовался postman
