@@ -16,3 +16,4 @@
 * Для настройки миграций `dotnet ef migrations add {Имя}`
 * Для инициализации базы данных `dotnet ef database update`
 * Запуск производится в MS VS (http, https) или в powershell `dotnet run`
+* Не реализованы unit-test.
