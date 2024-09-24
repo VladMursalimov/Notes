@@ -15,18 +15,14 @@ namespace Sobes
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Добавление контроллеров и регистрация валидаторов FluentValidation
-            builder.Services.AddValidatorsFromAssemblyContaining<CreateNoteCommandValidator>(); // register validators
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateNoteCommandValidator>(); 
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
-            // Добавление контекста базы данных
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // Регистрация MediatR
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
-            // Регистрация сервисов и репозиториев
             builder.Services.AddScoped<NoteService>();
             builder.Services.AddScoped<INoteRepository, NoteRepository>();
 
@@ -36,8 +32,7 @@ namespace Sobes
             builder.Services.AddScoped<ReminderService>();
             builder.Services.AddScoped<IReminderRepository, ReminderRepository>();
 
-            // Pipeline для валидации
-            //builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            //  builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             var app = builder.Build();
 
