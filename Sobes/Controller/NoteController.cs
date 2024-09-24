@@ -38,7 +38,7 @@ namespace Sobes.Controller
         public async Task<IActionResult> GetNode(int id)
         {
 
-            var note = await _mediator.Send(new GetNote(id));
+            var note = await _mediator.Send(new GetNoteCommand(id));
             return Ok(note);
         }
 
@@ -57,6 +57,7 @@ namespace Sobes.Controller
         public async Task<IActionResult> UpdateNote(int id, [FromBody] UpdateNoteCommand command)
         {
             command.Id = id;
+
 
             await _mediator.Send(command);
 
