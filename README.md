@@ -12,7 +12,7 @@
    * Npgsql.EntityFrameworkCore.PostgreSQL               8.0.4       8.0.4
    * Swashbuckle.AspNetCore                              6.7.3       6.7.3
    * xunit                                               2.9.1       2.9.1
-В файле appsettings.json необходимо установить свою строку подключения к бд PostgreSQL.
-Для настройки миграций `dotnet ef migrations add {Имя}`
-Для инициализации базы данных `dotnet ef database update`
-Запуск производится в MS VS (http, https) или в powershell `dotnet run`
+* В файле appsettings.json необходимо установить свою строку подключения к бд PostgreSQL.
+* Для настройки миграций `dotnet ef migrations add {Имя}`
+* Для инициализации базы данных `dotnet ef database update`
+* Запуск производится в MS VS (http, https) или в powershell `dotnet run`
